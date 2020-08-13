@@ -7,33 +7,25 @@
     android:background="@color/colorFondodark"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="395dp"
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="238dp"
-        android:layout_height="358dp"
-        android:layout_marginLeft="@dimen/image_left_margin"
-        android:layout_marginRight="@dimen/image_left_margin"
-        android:scaleType="centerCrop"
+        android:layout_height="485dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/yo"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        />
-
-
-
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.crisspian.fragment_guide_01.FirstFragment"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/bt_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Push Me!"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import com.crisspian.fragment_guide_01.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding bind;
+    private boolean estado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +24,34 @@ public class MainActivity extends AppCompatActivity {
         bind.btButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            showFragment();
-
+                if (!estado) {
+                    showFragment();
+                }else{
+                    closeFragment();
+                }
 
             }
         });
-
     }
 
     private void showFragment(){
         FirstFragment firstFragment = FirstFragment.newInstance("",""); //Se genera la instancia del fragmento
         FragmentManager fragmentManager = getSupportFragmentManager(); //Obtenemos
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.add(R.id.frameLayout,firstFragment).addToBackStack(null).commit();
-
+        fragmentTransaction.add(R.id.frameLayout,firstFragment).commit();
+        bind.btButton.setText("Close");
+        estado = true;
     }
 
+    private void closeFragment(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.frameLayout);
+        if (fragment !=null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(fragment).commit();
+        }
+        bind.btButton.setText("Open");
+        estado = false;
+    }
 
 }
